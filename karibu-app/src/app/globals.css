@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ─── */
+@theme {
+  --color-accent:       #ff841a;
+  --color-accent-dark:  #cc6a14;
+  --color-accent-light: #ffc08a;
+  --color-charcoal:     #1A1A1A;
+  --color-charcoal-mid: #3D3D3D;
+  --color-cream:        #FAF8F3;
+  --color-border:       #E8E0D0;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+
+  --spacing-section: 6rem;   /* py-24 equivalent */
+}
+
+/* ─── Base Reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* compensate for sticky header */
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #1A1A1A;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  line-height: 1.2;
+  margin: 0;
+  color: #1A1A1A;
+}
+
+p { margin: 0; }
+a { text-decoration: none; color: inherit; }
+
+img { display: block; max-width: 100%; }
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input, select, textarea { font-family: inherit; }
+
+/* ─── Reusable Layout Utilities ─── */
+
+/* Consistent section wrapper */
+.section-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (min-width: 1024px) {
+  .section-container {
+    padding: 0 48px;
+  }
+}
+
+/* Standard section vertical rhythm */
+.section-padding {
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+/* Section header block */
+.section-eyebrow {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: #ff841a;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 600;
+  color: #1A1A1A;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.section-title--light {
+  color: #ffffff;
+}
+
+.section-subtitle {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 15px;
+  color: #6B7280;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+.section-divider {
+  width: 56px;
+  height: 2px;
+  background-color: #ff841a;
+  margin: 24px auto 0;
+}
+
+/* Cards */
+.card {
+  background: #ffffff;
+  border: 1px solid #E8E0D0;
+  border-radius: 2px;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+  border-color: #ff841a;
+}
+
+/* Accent button */
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #ff841a;
+  color: #ffffff;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-accent:hover {
+  background-color: #cc6a14;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: #1A1A1A;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 8px 16px;
+  border: 1.5px solid #1A1A1A;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline:hover {
+  background-color: #1A1A1A;
+  color: #ffffff;
+}
