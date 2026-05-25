@@ -1,4 +1,7 @@
-import { MapPin, Phone, Mail, Clock, Car } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { MapPin, Phone, Mail, Clock, Car, CreditCard, CheckCircle2 } from "lucide-react";
 
 const WhatsAppIcon = ({ size = 14, color = "currentColor" }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={color}>
@@ -7,14 +10,62 @@ const WhatsAppIcon = ({ size = 14, color = "currentColor" }) => (
 );
 
 const contactCards = [
-  { icon: <Phone size={22} />, title: "Phone / WhatsApp", lines: ["+255 742 899 903", <span key="wa" style={{ display: "flex", alignItems: "center", gap: "6px" }}><WhatsAppIcon size={14} color="#ff841a" /> +255 767 399 123</span>] },
+  { icon: <Phone size={22} />, title: "Phone / WhatsApp", lines: [<span key="wa" style={{ display: "flex", alignItems: "center", gap: "6px" }}><WhatsAppIcon size={14} color="#ff841a" /> +255 767 399 123</span>] },
   { icon: <Mail size={22} />, title: "Email", lines: ["info@karibucottage.co.tz"] },
-  { icon: <MapPin size={22} />, title: "Location", lines: ["Nkunjila, Moshi", "Kilimanjaro Region, Tanzania"] },
+  { 
+    icon: <MapPin size={22} />, 
+    title: "Location", 
+    lines: [
+      <a key="map" href="https://www.google.com/maps/place/KARIBU+COTTAGE+%26+SAFARI/@-3.3583388,37.3771707,17z/data=!4m9!3m8!1s0x1839d7b26b0d863f:0x5cfa00b52e726666!5m2!4m1!1i2!8m2!3d-3.3583388!4d37.3797456!16s%2Fg%2F11lzzxmlyp?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff841a] transition-colors block">
+        Msaranga Msufini, Moshi<br/>Kilimanjaro Region, Tanzania
+      </a>
+    ] 
+  },
+  { icon: <CreditCard size={22} />, title: "Payment Info", lines: ["John Kaakufui Ngowi", "CRDB Bank", "Account: 052644944700"] },
   { icon: <Clock size={22} />, title: "Check-in / Check-out", lines: ["Self check-in via smartlock — flexible arrival", "Check-out: By 11:00 AM"] },
   { icon: <Car size={22} />, title: "Airport Transfers", lines: ["Kilimanjaro International Airport (43km)", "Transfers available at extra cost — enquire when booking"] },
 ];
 
 export default function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      subject: formData.get('subject'),
+      message: formData.get('message'),
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        // Reset form state after a few seconds
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        const err = await response.json();
+        alert(`Failed to send message: ${err.error || "Please try again."}`);
+      }
+    } catch (error) {
+      alert("An error occurred. Please try again or email us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" style={{ backgroundColor: "#ffffff" }} className="section-padding">
       <div className="section-container">
@@ -28,32 +79,82 @@ export default function Contact() {
           <div className="section-divider" />
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "40px" }}>
-          {/* Info Cards grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "20px" }}>
-            {contactCards.map((card) => (
-              <div key={card.title} className="card" style={{ padding: "28px 24px" }}>
-                <div style={{ color: "#ff841a", marginBottom: "16px" }}>{card.icon}</div>
-                <h4 style={{ fontSize: "15px", fontWeight: 600, color: "#1A1A1A", marginBottom: "10px" }}>{card.title}</h4>
-                {card.lines.map((line, i) => (
-                  <p key={i} style={{ fontSize: "13px", color: "#6B7280", lineHeight: 1.7 }}>{line}</p>
-                ))}
-              </div>
-            ))}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+          {/* Left Column: Form & Map */}
+          <div className="lg:col-span-7 flex flex-col gap-10">
+            {/* Form */}
+            <div className="bg-white p-8 md:p-10 border border-[#E8E0D0] rounded-sm shadow-xl">
+              <h3 className="font-serif text-2xl text-[#1A1A1A] mb-2">Send us a message</h3>
+              <p className="text-[#6B7280] text-sm mb-8">Have a question or want to plan a custom safari? Drop us a line.</p>
+              
+              {isSubmitted ? (
+                <div className="bg-[#FAF8F3] border border-[#E8E0D0] rounded-sm p-8 text-center flex flex-col items-center justify-center py-12">
+                  <CheckCircle2 size={48} className="text-[#ff841a] mb-4" />
+                  <h4 className="font-serif text-xl text-[#1A1A1A] mb-2">Message Sent!</h4>
+                  <p className="text-[#6B7280] text-sm">Thank you for reaching out. We will get back to you shortly.</p>
+                </div>
+              ) : (
+                <form className="space-y-6" onSubmit={handleSubmit}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="name" className="block text-xs font-semibold text-[#9CA3AF] uppercase tracking-wider mb-2">Your Name</label>
+                      <input type="text" id="name" name="name" required className="w-full bg-[#FAF8F3] border border-[#E8E0D0] rounded-sm px-4 py-3 text-[#1A1A1A] text-sm focus:outline-none focus:border-[#ff841a] focus:ring-1 focus:ring-[#ff841a] transition-all" placeholder="John Doe" />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-xs font-semibold text-[#9CA3AF] uppercase tracking-wider mb-2">Your Email</label>
+                      <input type="email" id="email" name="email" required className="w-full bg-[#FAF8F3] border border-[#E8E0D0] rounded-sm px-4 py-3 text-[#1A1A1A] text-sm focus:outline-none focus:border-[#ff841a] focus:ring-1 focus:ring-[#ff841a] transition-all" placeholder="john@example.com" />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="subject" className="block text-xs font-semibold text-[#9CA3AF] uppercase tracking-wider mb-2">Subject</label>
+                    <input type="text" id="subject" name="subject" required className="w-full bg-[#FAF8F3] border border-[#E8E0D0] rounded-sm px-4 py-3 text-[#1A1A1A] text-sm focus:outline-none focus:border-[#ff841a] focus:ring-1 focus:ring-[#ff841a] transition-all" placeholder="Booking Enquiry" />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-xs font-semibold text-[#9CA3AF] uppercase tracking-wider mb-2">Message</label>
+                    <textarea id="message" name="message" required rows={4} className="w-full bg-[#FAF8F3] border border-[#E8E0D0] rounded-sm px-4 py-3 text-[#1A1A1A] text-sm focus:outline-none focus:border-[#ff841a] focus:ring-1 focus:ring-[#ff841a] transition-all resize-none" placeholder="Tell us about your plans..."></textarea>
+                  </div>
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting} 
+                    style={{ backgroundColor: "#ff841a", color: "white" }}
+                    className="w-full font-bold py-4 px-8 rounded-sm text-sm uppercase tracking-[0.1em] transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-[0_4px_14px_rgba(255,132,26,0.3)] hover:opacity-90"
+                  >
+                    {isSubmitting ? "Submitting..." : "Submit Message"}
+                  </button>
+                </form>
+              )}
+            </div>
+
+            {/* Map */}
+            <div className="rounded-sm overflow-hidden border border-[#E8E0D0] shadow-sm h-[350px]">
+              <iframe
+                src="https://maps.google.com/maps?q=KARIBU+COTTAGE+%26+SAFARI,+Moshi,+Tanzania&hl=en&z=15&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, display: "block" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Karibu Cottage Safari — Moshi, Tanzania"
+              />
+            </div>
           </div>
 
-          {/* Map */}
-          <div style={{ borderRadius: "2px", overflow: "hidden", border: "1px solid #E8E0D0", height: "400px" }}>
-            <iframe
-              src="https://maps.google.com/maps?q=-3.358083,37.379583&hl=en&z=15&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0, display: "block" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Karibu Cottage Safari — Moshi, Tanzania"
-            />
+          {/* Right Column: Info Cards */}
+          <div className="lg:col-span-5 flex flex-col gap-4">
+            {contactCards.map((card) => (
+              <div key={card.title} className="bg-white border border-[#E8E0D0] shadow-sm rounded-sm p-6 flex gap-4 hover:border-[#ff841a] transition-colors">
+                <div className="text-[#ff841a] flex-shrink-0 mt-1">{card.icon}</div>
+                <div>
+                  <h4 className="text-[13px] font-bold text-[#1A1A1A] mb-2 tracking-wide uppercase">{card.title}</h4>
+                  <div className="flex flex-col gap-1">
+                    {card.lines.map((line, i) => (
+                      <div key={i} className="text-[14px] text-[#6B7280] leading-relaxed">{line}</div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

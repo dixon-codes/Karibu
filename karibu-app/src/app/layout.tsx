@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Karibu Cottage Safari | Luxury Stay at the Foot of Kilimanjaro",
   description:
-    "Experience safari luxury and home comfort at Karibu Cottage Safari in Nkunjila, Moshi, Kilimanjaro, Tanzania. Book your stay near Kilimanjaro today.",
+    "Experience safari luxury and home comfort at Karibu Cottage Safari in Msaranga Msufini, Moshi, Kilimanjaro, Tanzania. Book your stay near Kilimanjaro today.",
   keywords: [
     "Safari accommodation Moshi",
     "Cottages near Kilimanjaro",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Karibu Cottage Safari | Luxury Stay at the Foot of Kilimanjaro",
     description:
-      "Experience safari luxury and home comfort at Karibu Cottage Safari in Nkunjila, Moshi, Kilimanjaro, Tanzania.",
+      "Experience safari luxury and home comfort at Karibu Cottage Safari in Msaranga Msufini, Moshi, Kilimanjaro, Tanzania.",
     url: "https://karibucottagesafari.com",
     siteName: "Karibu Cottage Safari",
     locale: "en_TZ",

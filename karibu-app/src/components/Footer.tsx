@@ -13,12 +13,13 @@ const WhatsAppIcon = ({ size = 14, color = "currentColor" }) => (
 );
 
 const quickLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#rooms", label: "The Cottage" },
-  { href: "#gallery", label: "Photo Tour" },
-  { href: "#amenities", label: "Amenities" },
-  { href: "#safari", label: "Safari & Tours" },
-  { href: "#booking", label: "Book Now" },
+  { name: "Home", href: "/" },
+  { name: "Accommodation", href: "/#rooms" },
+  { name: "Amenities", href: "/#amenities" },
+  { name: "Safaris", href: "/safaris" },
+  { name: "Charity", href: "/charity" },
+  { name: "Reviews", href: "/#reviews" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 const policies = [
@@ -100,7 +101,7 @@ export default function Footer() {
                   style={{ ...sans, fontSize: "13px", color: "#9CA3AF", textDecoration: "none", transition: "color 0.2s" }}
                   className="hover:text-[#ff841a]"
                 >
-                  {link.label}
+                  {link.name}
                 </a>
               </li>
             ))}
@@ -135,10 +136,10 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="https://wa.me/255767399123" target="_blank" rel="noopener noreferrer" style={{ ...sans, display: "flex", alignItems: "flex-start", gap: "10px", fontSize: "13px", color: "#9CA3AF", textDecoration: "none", transition: "color 0.2s" }} className="hover:text-[#ff841a]">
-                <span style={{ marginTop: "2px", flexShrink: 0, color: "#ff841a" }}>
+              <a href="https://wa.me/255767399123" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "8px", color: "#9CA3AF" }} className="hover:text-white transition-colors">
+                <div style={{ width: "24px", height: "24px", borderRadius: "12px", backgroundColor: "#ff841a20", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <WhatsAppIcon size={14} color="#ff841a" />
-                </span>
+                </div>
                 +255 767 399 123
               </a>
             </li>
@@ -150,9 +151,22 @@ export default function Footer() {
             </li>
             <li style={{ ...sans, display: "flex", alignItems: "flex-start", gap: "10px", fontSize: "13px", color: "#9CA3AF" }}>
               <MapPin size={14} style={{ marginTop: "2px", flexShrink: 0, color: "#ff841a" }} />
-              <span>Nkunjila, Moshi, Kilimanjaro Region, Tanzania</span>
+              <a href="https://www.google.com/maps/place/KARIBU+COTTAGE+%26+SAFARI/@-3.3583388,37.3771707,17z/data=!4m9!3m8!1s0x1839d7b26b0d863f:0x5cfa00b52e726666!5m2!4m1!1i2!8m2!3d-3.3583388!4d37.3797456!16s%2Fg%2F11lzzxmlyp?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff841a] transition-colors">
+                Msaranga Msufini, Moshi, Kilimanjaro Region, Tanzania
+              </a>
             </li>
           </ul>
+
+          {/* Payment Info */}
+          <div style={{ marginTop: "24px" }}>
+            <h4 style={{ ...serif, fontSize: "14px", fontWeight: 600, color: "white", marginBottom: "12px" }}>
+              Pay Here
+            </h4>
+            <div style={{ ...sans, fontSize: "13px", color: "#9CA3AF", lineHeight: 1.6, backgroundColor: "rgba(255, 255, 255, 0.05)", padding: "12px", borderRadius: "2px", borderLeft: "3px solid #ff841a" }}>
+              <div style={{ color: "white", fontWeight: 500, marginBottom: "2px" }}>John Kaakufui Ngowi</div>
+              <div>CRDB: <span style={{ color: "white", fontFamily: "monospace", letterSpacing: "1px" }}>052644944700</span></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -163,7 +177,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Karibu Cottage Safari. All rights reserved.
           </span>
           <span style={{ ...sans, fontSize: "12px", color: "#6B7280" }}>
-            Nkunjila, Moshi · Kilimanjaro, Tanzania
+            Msaranga Msufini, Moshi · Kilimanjaro, Tanzania
           </span>
         </div>
       </div>

@@ -4,6 +4,7 @@ import TheSpace from "@/components/TheSpace";
 import PhotoTour from "@/components/PhotoTour";
 import Amenities from "@/components/Amenities";
 import Safari from "@/components/Safari";
+import Reviews from "@/components/Reviews";
 import BookingCTA from "@/components/BookingCTA";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -18,6 +19,7 @@ export default function Home() {
       <PhotoTour />
       <Amenities />
       <Safari />
+      <Reviews />
       <BookingCTA />
       <Contact />
       <Footer />

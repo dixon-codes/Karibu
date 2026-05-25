@@ -5,8 +5,8 @@ import { BedDouble, Bath, Users, Key, PawPrint, CheckCircle2 } from "lucide-reac
 
 
 const homeStats = [
-  { icon: <Users size={20} />, value: "8 Guests", label: "Maximum capacity" },
-  { icon: <BedDouble size={20} />, value: "3 Bedrooms", label: "4 Queen beds total" },
+  { icon: <Users size={20} />, value: "14 Guests", label: "Maximum capacity" },
+  { icon: <BedDouble size={20} />, value: "7 Bedrooms", label: "Main Cottage & Ming Wing" },
   { icon: <Bath size={20} />, value: "3.5 Bathrooms", label: "3 warm showers" },
   { icon: <Key size={20} />, value: "Self Check-in", label: "Secure smartlock" },
   { icon: <CheckCircle2 size={20} />, value: "Superhost", label: "Highly rated host" },
@@ -22,7 +22,7 @@ export default function TheSpace() {
           <p className="section-eyebrow">Your Private Retreat</p>
           <h2 className="section-title">The Cottage</h2>
           <p className="section-subtitle">
-            Step into your own private oasis. Karibu Cottage offers three comfortable bedrooms, a fully equipped kitchen, and lush gardens within a secure, peaceful compound — perfect for families and groups.
+            Step into your own private oasis. Karibu Cottage offers seven comfortable bedrooms (including the newly added Ming Wing), a fully equipped kitchen, and lush gardens within a secure, peaceful compound — perfect for larger families and groups.
           </p>
           <div className="section-divider" />
         </div>

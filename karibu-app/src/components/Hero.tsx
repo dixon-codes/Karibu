@@ -27,53 +27,48 @@ export default function Hero() {
 
       {/* Content */}
       <div style={{ position: "relative", zIndex: 10, textAlign: "center", padding: "0 24px", maxWidth: "1000px", margin: "0 auto" }}>
-        <p style={{ color: "#ff841a", fontSize: "11px", letterSpacing: "0.4em", textTransform: "uppercase", fontWeight: 600, marginBottom: "20px", fontFamily: "Inter, sans-serif" }}>
-          Nkunjila · Moshi · Kilimanjaro, Tanzania
-        </p>
-
-        <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "white", fontSize: "clamp(2.2rem, 5vw, 4rem)", fontWeight: 600, lineHeight: 1.15, marginBottom: "24px", textShadow: "0 2px 20px rgba(0,0,0,0.4)" }}>
-          Experience Safari Luxury &amp;<br />
-          <em style={{ fontStyle: "normal", color: "#ff841a" }}>Home Comfort</em> at the<br />
-          Foot of Kilimanjaro
+        <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "white", fontSize: "clamp(2.2rem, 5vw, 4.2rem)", fontWeight: 600, lineHeight: 1.15, marginBottom: "20px", textShadow: "0 4px 24px rgba(0,0,0,0.5)" }}>
+          Safari Adventures &<br />
+          <em style={{ fontStyle: "normal", color: "#ff841a" }}>Home Comfort</em> at<br />
+          Kilimanjaro
         </h1>
 
-        <p style={{ color: "rgba(255,255,255,0.82)", fontSize: "1.05rem", maxWidth: "560px", margin: "0 auto 40px", fontWeight: 300, lineHeight: 1.75, fontFamily: "Inter, sans-serif" }}>
-          Karibu — welcome to your private retreat surrounded by lush gardens, mountain views, and curated safari experiences.
+        <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", maxWidth: "520px", margin: "0 auto 36px", fontWeight: 300, lineHeight: 1.6, fontFamily: "Inter, sans-serif" }}>
+          Welcome to your private retreat—surrounded by lush gardens, mountain views, and curated wildlife experiences.
         </p>
 
-        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "16px" }}>
+        <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 mt-8">
           <a
             href="#booking"
-            style={{ display: "inline-flex", alignItems: "center", gap: "8px", backgroundColor: "#ff841a", color: "white", fontWeight: 700, padding: "14px 32px", borderRadius: "2px", fontSize: "14px", letterSpacing: "0.05em", textDecoration: "none", transition: "background-color 0.2s", fontFamily: "Inter, sans-serif" }}
-            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#cc6a14")}
-            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#ff841a")}
+            style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", backgroundColor: "#ff841a", color: "white", fontWeight: 700, padding: "14px 32px", borderRadius: "2px", fontSize: "14px", letterSpacing: "0.05em", textDecoration: "none", transition: "background-color 0.2s", fontFamily: "Inter, sans-serif" }}
+            className="w-full sm:w-auto hover:bg-[#cc6a14]"
           >
             Book Your Stay
           </a>
           <a
             href="#rooms"
-            style={{ display: "inline-flex", alignItems: "center", gap: "8px", backgroundColor: "rgba(255,255,255,0.12)", color: "white", border: "1px solid rgba(255,255,255,0.45)", fontWeight: 500, padding: "14px 32px", borderRadius: "2px", fontSize: "14px", letterSpacing: "0.05em", textDecoration: "none", backdropFilter: "blur(8px)", fontFamily: "Inter, sans-serif" }}
+            style={{ alignItems: "center", justifyContent: "center", gap: "8px", backgroundColor: "rgba(255,255,255,0.12)", color: "white", border: "1px solid rgba(255,255,255,0.45)", fontWeight: 500, padding: "14px 32px", borderRadius: "2px", fontSize: "14px", letterSpacing: "0.05em", textDecoration: "none", backdropFilter: "blur(8px)", fontFamily: "Inter, sans-serif" }}
+            className="hidden sm:inline-flex hover:bg-white/20 transition-colors"
           >
             <Images size={16} />
             Explore The Cottage
           </a>
           <a
             href="tel:+255742899903"
-            style={{ display: "inline-flex", alignItems: "center", gap: "8px", color: "rgba(255,255,255,0.75)", fontSize: "14px", textDecoration: "none", fontFamily: "Inter, sans-serif" }}
+            style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", backgroundColor: "rgba(0,0,0,0.3)", color: "white", border: "1px solid rgba(255,255,255,0.2)", fontWeight: 500, padding: "14px 32px", borderRadius: "2px", fontSize: "14px", letterSpacing: "0.05em", textDecoration: "none", backdropFilter: "blur(8px)", fontFamily: "Inter, sans-serif" }}
+            className="w-full sm:w-auto hover:bg-black/50 transition-colors"
           >
-            <Phone size={15} />
+            <Phone size={16} />
             +255 742 899 903
           </a>
         </div>
 
         {/* Stats bar */}
-        <div style={{ marginTop: "56px", display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "48px" }}>
-          {[
-            { value: "8", label: "Max Guests" },
-            { value: "3", label: "Bedrooms" },
-            { value: "3.5", label: "Bathrooms" },
-            { value: "43km", label: "From KIA Airport" },
-          ].map((stat) => (
+        <div className="hidden md:flex flex-wrap justify-center gap-x-12 gap-y-6 mt-16">
+          {[{ value: "7", label: "Bedrooms" },
+            { value: "3.5", label: "Baths" },
+            { value: "14", label: "Guests Max" },
+            { value: "2", label: "Acres of Garden" }].map((stat) => (
             <div key={stat.label} style={{ textAlign: "center" }}>
               <div style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#ff841a", fontSize: "1.75rem", fontWeight: 600 }}>
                 {stat.value}

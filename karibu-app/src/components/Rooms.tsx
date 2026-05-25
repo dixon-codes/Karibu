@@ -76,6 +76,26 @@ const rooms: Room[] = [
     image: "/building/GOPR0079.jpg",
     badge: "Family Pick",
   },
+  {
+    id: "ming-wing",
+    name: "The Ming Wing",
+    size: "4 Additional Bedrooms",
+    pricePerNight: 200,
+    description:
+      "The newly added Ming Wing expands the property's capacity with four additional comfortable bedrooms. It is perfectly designed for larger groups or families wanting to stay together.",
+    amenities: [
+      "4 Bedrooms", "Shared Lounge Area", "Private Access", "Garden Views",
+      "Air Conditioning", "Free WiFi", "Housekeeping",
+    ],
+    highlights: [
+      { icon: <BedDouble size={14} />, text: "4 Bedrooms" },
+      { icon: <Users size={14} />, text: "Sleeps up to 8" },
+      { icon: <Sofa size={14} />, text: "Shared Lounge" },
+      { icon: <Wifi size={14} />, text: "Free WiFi" },
+    ],
+    image: "/building/GOPR0095.jpg", // placeholder
+    badge: "New Addition",
+  },
 ];
 
 function RoomModal({ room, onClose }: { room: Room; onClose: () => void }) {
@@ -133,7 +153,7 @@ export default function Rooms() {
           <p className="section-eyebrow">Accommodation</p>
           <h2 className="section-title">Our Rooms &amp; Suites</h2>
           <p className="section-subtitle">
-            Three unique spaces — from cosy doubles to spacious family rooms with private pool access — each designed to deliver safari comfort and Kilimanjaro views.
+            Four unique spaces (including the newly added Ming Wing) — from cosy doubles to spacious family rooms — each designed to deliver safari comfort and Kilimanjaro views.
           </p>
           <div className="section-divider" />
         </div>

@@ -18,7 +18,7 @@ export default function PhotoTour() {
           Take a Photo Tour
         </h2>
         <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "15px", lineHeight: 1.8, marginBottom: "40px" }}>
-          Walk through the bedrooms, explore the lush gardens, and view the fully-equipped kitchen. Experience the warmth and comfort of Karibu Cottage before you even arrive.
+          Walk through all 7 bedrooms (including the new Ming Wing), explore the lush gardens, and view the fully-equipped kitchen. Experience the warmth and comfort of Karibu Cottage before you even arrive.
         </p>
         <a 
           href="https://www.airbnb.com/rooms/1226048061128227278?search_mode=regular_search&adults=1&check_in=2026-05-16&check_out=2026-05-21&children=0&infants=0&pets=0&source_impression_id=p3_1778887226_P3sSPxGGeQENIPGC&previous_page_section_name=1000&modal=PHOTO_TOUR_SCROLLABLE"
